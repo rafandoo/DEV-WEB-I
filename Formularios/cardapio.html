@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardapio</title>
+</head>
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <legend>Cardapio</legend>
+            <p>Bem vindo ao Restaurante Restô!</p>
+            <p>Escolha abaixo o que deseja pedir.</p>
+
+            <br>
+            <label for="entrada">Entradas: </label>
+            <br>
+            <input list="entrada" name="entradas" id="entradas">
+            <datalist id="entrada">
+                <option value="HACKPETER">
+                <option value="BRUSCHETTA CAPRESE">
+                <option value="BRUSCHETTA MEDITERANEA">
+                <option value="BRIE ASSADO COM GELEIA DE PIMENTA">
+                <option value="CAMARAO CROCANTE">
+                <option value="SALADA DE FOLHAS VERDES">
+                <option value="BRIE ASSADO COM MEL">
+                <option value="CESTA DE PAES">
+            </datalist>
+
+            <br>
+            <label for="principal">Prato principal: </label>
+            <br>
+            <input list="principal" name="principais" id="principais">
+            <datalist id="principal">
+                <option value="CONCHIGLIONE COM CAMAROES">
+                <option value="MIGNON PARMEGIANA">
+                <option value="MASSA SURF AND TURF">
+                <option value="RISOTO DE FILE FUNGHI">
+                <option value="CAMARAO DA CHEF">
+                <option value="POLVO COM MOLHO PUTANESCA">
+                <option value="RISOTO DE CAMARAO E BRIE">
+                <option value="MIGNON POIVRE">
+            </datalist>
+
+            <br>
+            <label for="bebida">Bebida: </label>
+            <br>
+            <input list="bebida" name="bebidas" id="bebidas">
+            <datalist id="bebida">
+                <option value="STELLA ARTOIS">
+                <option value="AGUA MINERAL COM GAS">
+                <option value="AGUA MINERAL SEM GAS">
+                <option value="SPATEN">
+                <option value="SUCO UVA">
+                <option value="VINHO DO PORTO">
+                <option value="7 COLORES ROSE">
+                <option value="COCA COLA">
+            </datalist>
+
+            <br>
+            <label for="sobremesa">Sobremesa:</label>
+            <br>
+            <input list="sobremesa" name="sobremesas" id="sobremesas">
+            <datalist id="sobremesa">
+                <option value="SEMIFREDO CHOCOLATE BRANCO">
+                <option value="SEMIFREDO LIMAO SICILIANO">
+                <option value="SEMIFREDO CHOCOLATE">
+                <option value="PAVLOVA">
+            </datalist>
+
+            <br><br>
+            <input type="submit">
+            <input type="reset">
+        </fieldset>
+    </form>
+</body>
+</html>
