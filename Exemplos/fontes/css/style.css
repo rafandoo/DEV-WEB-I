@@ -1,0 +1,25 @@
+
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@font-face {
+    font-family: "coca";
+    src: url("../fonts/LOKICOLA.TTF")
+    format("truetype");
+}
+
+.coca {
+    font-family: "coca";
+    font-size: 80px;
+}
+
+.oleo {
+    font-family: "Oleo Script", cursive;
+    font-size: 80px;
+}
+
+.bebas {
+    font-family: "Bebas Neue", cursive;
+    font-size: 80px;
+}
