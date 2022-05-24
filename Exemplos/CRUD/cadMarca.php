@@ -25,6 +25,7 @@
             <input type="text" name="descricao" id="descricao">
             <br>
             <input type="submit" value="Salvar" name="salvar">
+            <a href="index.php">Voltar</a>
         </fieldset>
     </form>
 </body>

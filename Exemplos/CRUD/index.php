@@ -11,8 +11,10 @@
 <head>
     <meta charset="UTF-8">
     <title> <?php echo $title; ?> </title>
+    <script src="js/confirm.js"></script>
 </head>
 <body>
+    <?php include 'menu.php';?>
     <form method="post">
     <fieldset>
         <legend>Procurar Marcas</legend>
@@ -20,7 +22,7 @@
         <input type="submit" name="acao"     id="acao">
         <br><br>
         <table>
-	    <tr><td><b>Código</b></td><td><b>Descrição</b></td> </tr>
+	    <tr><td><b>Código</b></td><td><b>Descrição</b></td></tr>
         <?php
             $pdo = Conexao::getInstance(); 
             $consulta = $pdo->query("SELECT * FROM marca 
@@ -31,6 +33,7 @@
         ?>
 	    <tr><td><?php echo $marca->getCodigo();?></td>
             <td><?php echo $marca->getDescricao();?></td>
+            <td><a href="javascript:confirm_exclusion('acaoMarca.php?acao=excluir&codigo=<?=$marca->getCodigo()?>')">Excluir</a></td>
 	    </tr>
             <?php } ?>       
         </table>
@@ -38,3 +41,5 @@
     </form>
 </body>
 </html>
+
+
