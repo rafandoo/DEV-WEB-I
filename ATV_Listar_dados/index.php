@@ -7,8 +7,8 @@
     $title = "Lista de Carros";
 
     $procurar = isset($_POST["procurar"]) ? $_POST["procurar"] : ""; 
-    $busca = isset($_POST["busca"]) ? $_POST["busca"] : "";
-    $ordem = isset($_POST["ordem"]) ? $_POST["ordem"] : "";
+    $busca = isset($_POST["busca"]) ? $_POST["busca"] : " ";
+    $ordem = isset($_POST["ordem"]) ? $_POST["ordem"] : "nome";
 
     function anoUsoCarro($dataFabricacao) {
         $anoUso = 0;
@@ -33,8 +33,19 @@
         } else {
             $valorRevenda = $valor;
         }
-
         return round($valorRevenda, 2);
+    }
+
+    function colorKm($km) {
+        if ($km > 100000) {
+            return 'red';
+        }
+    }
+
+    function colorAno($anoUso) {
+        if ($anoUso > 10) {
+            return 'red';
+        }
     }
 
     function buscaOrdenada($procurar, $busca, $ordem) {
@@ -42,13 +53,14 @@
 
         if ($busca == "nome") {
             $stmt = $pdo->prepare("SELECT * FROM carro WHERE $busca LIKE :procurar ORDER BY $ordem");
+            $stmt->bindValue(":procurar", "%" . $procurar . "%");
         } else if ($busca == "valor" or $busca == "km") {
-            $stmt = $pdo->prepare("SELECT * FROM carro WHERE $busca <= :procurar ORDER BY  $ordem");
+            $stmt = $pdo->prepare("SELECT * FROM carro WHERE $busca <= :procurar ORDER BY $ordem");
+            $stmt->bindValue(":procurar", $procurar);
         } else {
-            $stmt = $pdo->prepare("SELECT * FROM carro ORDER BY nome");
+            $stmt = $pdo->prepare("SELECT * FROM carro ORDER BY $ordem");
         }
 
-        $stmt->bindValue(":procurar", "%" . $procurar . "%");
         $stmt->execute();
 
         while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -57,20 +69,21 @@
             echo "<td>". $carro->getId() ."</td>";
             echo "<td>". $carro->getNome() ."</td>";
             echo "<td>". $carro->getValor(). "</td>";
-            echo "<td>". $carro->getKm() ."</td>";
-            echo "<td>". $carro->getDataFabricacao() ."</td>";
+            echo "<td id=". colorKm($carro->getKm()) .">". $carro->getKm() ."</td>";
+            echo "<td id=". colorAno(anoUsoCarro($carro->getDataFabricacao())) .">". $carro->getDataFabricacao() ."</td>";
             echo "<td>". anoUsoCarro($carro->getDataFabricacao()) ."</td>";
             echo "<td>". kmPorAno($carro->getKm(), anoUsoCarro($carro->getDataFabricacao())) ."</td>";
             echo "<td>". valorRevenda($carro->getValor(), $carro->getKm(), anoUsoCarro($carro->getDataFabricacao())) ."</td>";
+            echo "<td><a href='javascript:confirmExclusion(\"acaoCarro.php?acao=Excluir&id=". $carro->getId() ."\")'>Excluir</a></td>";
             echo "</tr>";
         }
     }
-
-
 ?>
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/confirm.js"></script>
     <title> <?php echo $title;?> </title>
 </head>
 <body>
@@ -82,7 +95,7 @@
         <input type="submit" name="acao" id="acao">
         <br>
         <span>Busca por: </span>
-        <input type="radio" name="busca" id="buscaNome" value="nome" checked>
+        <input type="radio" name="busca" id="buscaNome" value="nome">
         <label for="buscaNome">Nome</label>
         <input type="radio" name="busca" id="buscaValor" value="valor">
         <label for="buscaValor">Valor</label>
@@ -96,7 +109,6 @@
         <label for="ordemValor">Valor</label>
         <input type="radio" name="ordem" id="ordemKm" value="km">
         <label for="ordemKm">Km</label>
-        <br>
         <br><br>
         <table>
             <tr>
