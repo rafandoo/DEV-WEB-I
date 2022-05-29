@@ -1,0 +1,9 @@
+CREATE TABLE `devweb`.`carro` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `valor` DOUBLE NOT NULL,
+  `km` DOUBLE NOT NULL,
+  `dataFabricacao` DATE NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
