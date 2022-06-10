@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    
+
+
+?>
+
 <html lang="pt=br">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +19,7 @@
             <input type="text" name="id" id="id" value="0" readonly>
             <br><br>
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" size="37">
+            <input type="text" name="nome" id="nome" size="37" value="<??>">
             <br><br>
             <label for="valor">Valor:</label>
             <input type="text" name="valor" id="valor" size="37">

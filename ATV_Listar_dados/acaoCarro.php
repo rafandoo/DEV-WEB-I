@@ -18,6 +18,9 @@
         case "Excluir":
             deleteCarro();
             break;
+        case "Editar":
+            updateCarro(buildCarro($_POST["id"] ,$_POST["nome"], $_POST["valor"], $_POST["km"], $_POST["dataFabricacao"]));
+            break;
     }
 
     function buildCarro ($id, $nome, $valor, $km, $dataFabricacao) {
@@ -56,4 +59,6 @@
         $stmt->execute();
         header("Location: index.php");
     }
+
+
 ?>

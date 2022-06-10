@@ -75,6 +75,7 @@
             echo "<td>". kmPorAno($carro->getKm(), anoUsoCarro($carro->getDataFabricacao())) ."</td>";
             echo "<td>". valorRevenda($carro->getValor(), $carro->getKm(), anoUsoCarro($carro->getDataFabricacao())) ."</td>";
             echo "<td><a href='javascript:confirmExclusion(\"acaoCarro.php?acao=Excluir&id=". $carro->getId() ."\")'>Excluir</a></td>";
+            echo "<td><a href='cadCarro.php?id=". $carro->getId() ."'>Editar</a></td>";
             echo "</tr>";
         }
     }
@@ -110,7 +111,7 @@
         <input type="radio" name="ordem" id="ordemKm" value="km">
         <label for="ordemKm">Km</label>
         <br><br>
-        <table>
+        <table> 
             <tr>
                 <td><b>ID</b></td>
                 <td><b>Nome</b></td> 
@@ -120,6 +121,7 @@
                 <td><b>Anos de uso do veiculo</b></td>
                 <td><b>Média KM/ano</b></td>
                 <td><b>Valor de revenda</b></td>
+                <td><b>Ação</b></td>
             </tr>
             <?php
                 buscaOrdenada($procurar, $busca, $ordem);
